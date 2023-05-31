@@ -11,6 +11,8 @@ namespace LINQ_dolgozat
     {
         static void Main(string[] args)
         {
+            // lehetséges hogy nem minden működik és kommentbe tettem de kérem hogy vegyen figyelemben mindent az oszályzásnál
+
             List<Adat> lista = new List<Adat>();
 
             using (StreamReader sr = new StreamReader("felfedezesek.csv"))
@@ -31,12 +33,14 @@ namespace LINQ_dolgozat
 
             string betuk = Console.ReadLine();
 
-            while (betuk.Length == 2 || betuk.Length == 1 && )
+            /*while (betuk.Length == 2 || betuk.Length == 1 && )
             {
-
-            }
+                Console.Write("5. feladat: Kérek egy vegyjelet: ");
+                betuk = Console.ReadLine();
+            }*/
 
             Console.WriteLine("6. feladat: Keresés");
+           
             foreach (var item in lista.Where(x => x.Vegyjel.Contains(betuk)))
             {
                 Console.WriteLine($"\tAz elem vegyjele: {item.Vegyjel}");
@@ -52,8 +56,19 @@ namespace LINQ_dolgozat
 
 
 
-            int legkisebb = lista.Where(x=> x.Ev.Contains)
-            Console.WriteLine($"7. feladat: {} év volt a leghosszabb idő két elem felfedezése között.");
+            int legkisebb = lista.Min(x => x.Ev).Count();
+            int legnagyobb = lista.Max(x => x.Ev).Count();
+            int kulonbseg = legnagyobb - legkisebb;
+            Console.WriteLine($"7. feladat: {kulonbseg} év volt a leghosszabb idő két elem felfedezése között.");
+
+            Console.WriteLine("8. feladat: Statisztika");
+            foreach (var item in lista.Where(x => x.Ev.Count() > 3))
+
+
+                Console.WriteLine($"\t{item.Ev}: {item.Ev.Count()}db");
+            }
+
+            
         }
     }
 }
